@@ -11,6 +11,7 @@ import datetime
 from datetime import datetime
 import pandas as pd
 from hpd import items
+import time
 import io
 import six
 import csv
@@ -19,7 +20,7 @@ from scrapy.exporters import CsvItemExporter
 class CSVPipeline(object):
     # exporter = ''
     def open_spider(self, spider):
-        self.file = open('output.csv', 'w+b')
+        self.file = open('{}_output.csv'.format(time.strftime("%Y%m%d-%H%M%S")), 'w+b')
         self.exporter = CustomCsvItemExporter(self.file)
         self.exporter.start_exporting()
 
